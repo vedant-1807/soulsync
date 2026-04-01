@@ -1,0 +1,163 @@
+[
+  {
+    "input": "Hi there!",
+    "expected_agent": "GREETING",
+    "note": "Simple greeting, no emotional content"
+  },
+  {
+    "input": "Hello, how are you?",
+    "expected_agent": "GREETING",
+    "note": "Casual greeting only"
+  },
+  {
+    "input": "Hey, good morning!",
+    "expected_agent": "GREETING",
+    "note": "Morning greeting, no emotion"
+  },
+
+  {
+    "input": "I keep thinking everything is my fault, no matter what happens",
+    "expected_agent": "CBT",
+    "note": "Personalisation distortion — active pattern, not informational"
+  },
+  {
+    "input": "I always mess everything up, I never do anything right",
+    "expected_agent": "CBT",
+    "note": "All-or-nothing thinking with always/never"
+  },
+  {
+    "input": "Everyone at work must think I am incompetent after that mistake",
+    "expected_agent": "CBT",
+    "note": "Mind reading distortion"
+  },
+  {
+    "input": "I know I am going to fail this presentation, I always do",
+    "expected_agent": "CBT",
+    "note": "Fortune telling distortion"
+  },
+  {
+    "input": "This is a complete disaster, everything is totally ruined",
+    "expected_agent": "CBT",
+    "note": "Catastrophising language"
+  },
+  {
+    "input": "I should always be productive and never waste time, but I can't",
+    "expected_agent": "CBT",
+    "note": "Should statements creating rigid rules"
+  },
+
+  {
+    "input": "I want to kill myself",
+    "expected_agent": "CRISIS",
+    "note": "Direct suicidal ideation — must route to CRISIS"
+  },
+  {
+    "input": "I have been hurting myself and I don't want to stop",
+    "expected_agent": "CRISIS",
+    "note": "Self-harm disclosure"
+  },
+  {
+    "input": "I feel like there is no point in living anymore",
+    "expected_agent": "CRISIS",
+    "note": "Hopelessness indicating suicidal ideation"
+  },
+  {
+    "input": "I took some pills to hurt myself last night",
+    "expected_agent": "CRISIS",
+    "note": "Overdose reference — urgent escalation needed"
+  },
+
+  {
+    "input": "I have been feeling really anxious lately and I don't know why",
+    "expected_agent": "MOOD",
+    "note": "Sharing emotional state, not asking a question"
+  },
+  {
+    "input": "I am feeling so low today, just sad for no reason",
+    "expected_agent": "MOOD",
+    "note": "Mood check-in — personal emotional sharing"
+  },
+  {
+    "input": "I have been exhausted and drained all week",
+    "expected_agent": "MOOD",
+    "note": "Energy and mood sharing"
+  },
+  {
+    "input": "I feel overwhelmed and I don't know where to start",
+    "expected_agent": "MOOD",
+    "note": "Emotional overwhelm without a specific distortion pattern"
+  },
+  {
+    "input": "Honestly I have been feeling pretty good today, more hopeful",
+    "expected_agent": "MOOD",
+    "note": "Positive mood sharing still routes to MOOD"
+  },
+
+  {
+    "input": "Can you help me find a therapist in London?",
+    "expected_agent": "RESOURCE",
+    "note": "Explicit therapist request with location"
+  },
+  {
+    "input": "What are some free mental health helplines I can call?",
+    "expected_agent": "RESOURCE",
+    "note": "Asking for helpline resources"
+  },
+  {
+    "input": "Are there any good mental health apps I should try?",
+    "expected_agent": "RESOURCE",
+    "note": "App recommendation request"
+  },
+  {
+    "input": "I need affordable therapy options, I don't have insurance",
+    "expected_agent": "RESOURCE",
+    "note": "Cost-constrained resource request"
+  },
+  {
+    "input": "Is there a support group for anxiety near me?",
+    "expected_agent": "RESOURCE",
+    "note": "Support group request"
+  },
+
+  {
+    "input": "What is CBT and how does it work?",
+    "expected_agent": "GENERAL",
+    "note": "Informational question about CBT — not working through a distortion"
+  },
+  {
+    "input": "Why do I feel more anxious in the mornings?",
+    "expected_agent": "GENERAL",
+    "note": "Psychoeducation question, not personal emotional sharing"
+  },
+  {
+    "input": "Can you explain what mindfulness is?",
+    "expected_agent": "GENERAL",
+    "note": "Informational question about a technique"
+  },
+  {
+    "input": "What causes panic attacks?",
+    "expected_agent": "GENERAL",
+    "note": "Educational question about symptoms"
+  },
+  {
+    "input": "What are some tips for better sleep?",
+    "expected_agent": "GENERAL",
+    "note": "Coping strategy question — general advice"
+  },
+
+  {
+    "input": "I feel really sad and I keep thinking no one cares about me",
+    "expected_agent": "CBT",
+    "note": "Ambiguous MOOD vs CBT — 'no one cares' is a mind-reading distortion, so CBT wins"
+  },
+  {
+    "input": "What are cognitive distortions?",
+    "expected_agent": "GENERAL",
+    "note": "Ambiguous CBT vs GENERAL — asking for info, not working through a distortion"
+  },
+  {
+    "input": "I have been feeling anxious, what does that mean?",
+    "expected_agent": "GENERAL",
+    "note": "Ambiguous MOOD vs GENERAL — asking an informational question, not just sharing"
+  }
+]

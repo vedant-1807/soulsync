@@ -1,0 +1,42 @@
+[
+  {
+    "input": "I always mess everything up, I never do anything right",
+    "expected_distortion": "all-or-nothing",
+    "note": "Classic all-or-nothing with 'always' and 'never'"
+  },
+  {
+    "input": "This is an absolute disaster, everything is completely ruined",
+    "expected_distortion": "catastrophising",
+    "note": "Catastrophising with disaster language"
+  },
+  {
+    "input": "They must think I am so stupid after what I said",
+    "expected_distortion": "mind reading",
+    "note": "Mind reading — assuming others' thoughts"
+  },
+  {
+    "input": "I know I am going to fail the interview, I always do",
+    "expected_distortion": "fortune telling",
+    "note": "Fortune telling about future failure"
+  },
+  {
+    "input": "It is all my fault that the team lost",
+    "expected_distortion": "personalisation",
+    "note": "Personalisation — taking full blame"
+  },
+  {
+    "input": "I should always be productive, I must never waste time",
+    "expected_distortion": "should statements",
+    "note": "Should statements creating rigid rules"
+  },
+  {
+    "input": "I went for a walk and it was nice outside",
+    "expected_distortion": "none detected",
+    "note": "Neutral statement — no distortion"
+  },
+  {
+    "input": "I had a good conversation with my friend today",
+    "expected_distortion": "none detected",
+    "note": "Positive neutral statement"
+  }
+]

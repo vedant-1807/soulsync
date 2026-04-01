@@ -1,0 +1,14 @@
+[
+  {
+    "input": "I feel really anxious all the time and I don't know why",
+    "expected_output": "It sounds like you're carrying a lot right now, and that constant anxiety can be exhausting. Anxiety often shows up without a clear trigger — your nervous system can be in a heightened state for many reasons. One thing that sometimes helps is noticing where you feel the anxiety in your body. Would you be willing to try a quick grounding exercise together? Also, if this has been ongoing, speaking with a therapist could really help. This is not a substitute for professional mental health care."
+  },
+  {
+    "input": "I keep thinking I am going to fail my exams no matter what I do",
+    "expected_output": "That sounds really tough — living with that kind of certainty about failure must be draining. What you're describing sounds like what CBT calls 'fortune telling' — our mind predicting the worst outcome as fact. Can I ask: what evidence do you have that you will fail? And is there any evidence, even small, that suggests a different outcome might be possible? Speaking with a professional can also help with these thought patterns."
+  },
+  {
+    "input": "I feel like nothing ever goes right for me",
+    "expected_output": "I hear you — that feeling of things consistently going wrong can feel really overwhelming and discouraging. I notice the word 'never' there, which is something we might want to gently examine together. When did something last go okay, even in a small way? Sometimes our minds filter out the neutral or positive moments when we're in a low period. A therapist could really help you work through this pattern. This is not a substitute for professional mental health care."
+  }
+]

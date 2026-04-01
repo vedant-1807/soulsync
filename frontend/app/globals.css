@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Lora:wght@400;500;600&display=swap');
+
+/* ── CSS Variables ───────────────────────────────────────── */
+:root {
+  --bg-0:   #090807;
+  --bg-1:   #100f0d;
+  --bg-2:   #181512;
+  --bg-3:   #1e1b16;
+  --gold:   #c4903a;
+  --gold-2: #e8b85a;
+  --sage:   #678f6e;
+  --crisis: #b85448;
+  --text-0: #f0e8da;
+  --text-1: #b5a98e;
+  --text-2: #7a7060;
+  --border: rgba(255,255,255,0.08);
+}
+
+/* ── Light theme overrides ───────────────────────────────────── */
+[data-theme="light"] {
+  --bg-0:   #f5f0e8;
+  --bg-1:   #ede6d8;
+  --bg-2:   #e4dbc9;
+  --bg-3:   #d8ccb5;
+  --text-0: #1a1510;
+  --text-1: #4a3f2f;
+  --text-2: #8a7a60;
+  --border: rgba(0,0,0,0.1);
+}
+
+/* ── Base ────────────────────────────────────────────────── */
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "DM Sans", system-ui, sans-serif;
+  background-color: var(--bg-0);
+  color: var(--text-0);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Custom scrollbar ────────────────────────────────────── */
+::-webkit-scrollbar        { width: 5px; height: 5px; }
+::-webkit-scrollbar-track  { background: transparent; }
+::-webkit-scrollbar-thumb  { background: var(--bg-3); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-2); }
+
+/* ── Textarea auto-resize ────────────────────────────────── */
+textarea { field-sizing: content; min-height: 40px; }
+
+/* ── Markdown inside message bubbles ─────────────────────── */
+.prose-message p              { margin: 0 0 0.5rem; }
+.prose-message p:last-child   { margin-bottom: 0; }
+.prose-message ul,
+.prose-message ol             { padding-left: 1.25rem; margin: 0.4rem 0; }
+.prose-message li             { margin-bottom: 0.2rem; }
+.prose-message strong         { font-weight: 600; color: var(--text-0); }
+.prose-message em             { font-style: italic; }
+.prose-message code           { font-size: 0.8em; background: rgba(196,144,58,0.15);
+                                padding: 0.1em 0.35em; border-radius: 4px; color: var(--gold); }
+.prose-message hr             { border-color: var(--border); margin: 0.6rem 0; }
+.prose-message h1, .prose-message h2,
+.prose-message h3             { font-weight: 600; margin: 0.5rem 0 0.2rem; color: var(--text-0); }
+.prose-message a              { color: var(--gold); text-decoration: underline; }

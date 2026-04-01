@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: soulsync-backend
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn api.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false
+      - key: TAVILY_API_KEY
+        sync: false
+      - key: FRONTEND_URL
+        sync: false          # Set to your Vercel URL e.g. https://soulsync.vercel.app
+      - key: LLM_MODEL
+        value: llama-3.3-70b-versatile
+      - key: LLM_TEMPERATURE
+        value: "0.4"
+      - key: RETRIEVER_TOP_K
+        value: "5"
+      - key: MEMORY_WINDOW
+        value: "10"
+      - key: CHROMA_PERSIST_DIR
+        value: ./chroma_db
+      - key: MOOD_DB_PATH
+        value: ./mood_store.db
+      - key: CHAT_DB_PATH
+        value: ./chat_sessions.db

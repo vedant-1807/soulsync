@@ -1,0 +1,33 @@
+SoulSync v3 suggested document sources
+
+Place PDF files in:
+- docs/cbt/
+- docs/crisis/
+- docs/general/
+
+Suggested filenames and sources:
+
+[cbt]
+- cognitive_therapy_beck.pdf (library/purchased)
+- feeling_good_burns.pdf (library/purchased)
+- mind_over_mood.pdf (library/purchased)
+
+[crisis]
+- safe_t_assessment.pdf
+  https://store.samhsa.gov/product/safe-t-pocket-card-suicide-assessment-five-step-evaluation-and-triage/pep24-01-036
+- 988_clinical_standards.pdf
+  https://988lifeline.org/
+- who_mhgap_guide.pdf
+  https://www.who.int/publications/i/item/9789241549790
+
+[general]
+- surgeon_general_mental_health.pdf
+  https://www.ncbi.nlm.nih.gov/books/NBK44243/
+- nimh_anxiety.pdf
+  https://www.nimh.nih.gov/health/publications/so-stressed-out-fact-sheet
+- nimh_depression.pdf
+  https://www.nimh.nih.gov/health/publications/depression
+- act_made_simple.pdf (library/purchased)
+- dbt_skills_manual.pdf (library/purchased)
+- nimh_ptsd.pdf
+  https://www.nimh.nih.gov/health/publications/post-traumatic-stress-disorder-ptsd
