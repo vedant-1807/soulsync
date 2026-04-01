@@ -42,14 +42,14 @@ export function ChatWindow({ sessionId, initialMessages = [], onMessagesUpdate }
 
     setInput("");
     setError(null);
-    setMessages((prev) => [...prev, { id: uuidv4(), role: "user", content: msg, timestamp: new Date() }]);
+    setMessages((prev) => [...prev, { id: uuidv4(), role: "user", content: msg, timestamp: new Date().toISOString() }]);
     setIsLoading(true);
 
     try {
       const res = await sendMessage(msg, sessionId);
       setMessages((prev) => [
         ...prev,
-        { id: uuidv4(), role: "assistant", content: res.answer, panel: res.panel, timestamp: new Date() },
+        { id: uuidv4(), role: "assistant", content: res.answer, panel: res.panel, timestamp: new Date().toISOString() },
       ]);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");

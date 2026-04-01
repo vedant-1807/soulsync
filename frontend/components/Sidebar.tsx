@@ -124,11 +124,11 @@ export function Sidebar({
             }}>
               Chats
             </p>
-            {sessions.map((s) => {
+            {sessions.map((s, idx) => {
               const isActive = s.id === activeChatId && activeTab === "chat";
               return (
                 <div
-                  key={s.id}
+                  key={s.id ?? `session-${idx}`}
                   className="chat-history-item"
                   style={{
                     display: "flex", alignItems: "center", gap: "0.375rem",

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef, useMemo } from "react";
+import { use, useState, useEffect, useCallback, useRef, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { Message, MoodPoint, ChatSession } from "../../../lib/types";
@@ -14,8 +14,8 @@ import { ChatPanel } from "../../../components/ChatPanel";
 import { RightPanel } from "../../../components/RightPanel";
 import { MoodLogsView } from "../../../components/MoodLogsView";
 
-export default function ChatPage({ params }: { params: { id: string } }) {
-  const chatId = params.id;
+export default function ChatPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id: chatId } = use(params);
   const router = useRouter();
   const { data: session } = useSession();
 

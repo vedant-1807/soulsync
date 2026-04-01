@@ -19,11 +19,12 @@ from config import MOOD_DB_PATH, CHAT_DB_PATH
 app   = FastAPI(title="SoulSync API", version="3.0")
 graph = build_graph()
 
-# Allow dev servers + production frontend (set FRONTEND_URL env var on Render)
+# Allow dev servers + production frontend
+# FRONTEND_URL can be comma-separated for multiple origins, e.g. "https://app.vercel.app,https://other.vercel.app"
 _allowed_origins = ["http://localhost:3000", "http://localhost:8000"]
 _frontend_url = os.environ.get("FRONTEND_URL", "")
 if _frontend_url:
-    _allowed_origins.append(_frontend_url)
+    _allowed_origins.extend([u.strip() for u in _frontend_url.split(",") if u.strip()])
 
 app.add_middleware(
     CORSMiddleware,
