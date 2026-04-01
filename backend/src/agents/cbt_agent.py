@@ -1,10 +1,9 @@
 """src/agents/cbt_agent.py — CBT specialist agent"""
-import os, sys, re, json
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+import re, json
 from langchain_groq import ChatGroq
-from src.retrieval import hybrid_retrieve_and_rerank, format_context
-from src.utils import compute_confidence, parse_pydantic_safe
-from src.schemas import CBTResponse
+from backend.src.retrieval import hybrid_retrieve_and_rerank, format_context
+from backend.src.utils import compute_confidence, parse_pydantic_safe
+from backend.src.schemas import CBTResponse
 from config import GROQ_API_KEY, LLM_MODEL, LLM_TEMPERATURE
 
 DISTORTIONS = {

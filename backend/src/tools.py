@@ -1,10 +1,8 @@
 """src/tools.py — shared LangChain Tool wrappers used by all agents"""
-import os, sys
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from langchain.tools import Tool
-from src.retrieval import hybrid_retrieve_and_rerank, format_context
-from src.safety import regex_crisis_check, get_crisis_response
-from src.utils import sanitise_input
+from backend.src.retrieval import hybrid_retrieve_and_rerank, format_context
+from backend.src.safety import regex_crisis_check, get_crisis_response
+from backend.src.utils import sanitise_input
 
 def build_knowledge_search_tool(category_filter=None):
     def search(query: str) -> str:

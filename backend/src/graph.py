@@ -19,10 +19,10 @@ import operator
 from langgraph.graph import StateGraph, END
 from langchain_groq import ChatGroq
 
-from src.agents.cbt_agent      import cbt_agent_node
-from src.agents.crisis_agent   import crisis_precheck_node, crisis_agent_node
-from src.agents.mood_tracker   import mood_tracker_node
-from src.agents.resource_finder import resource_finder_node
+from backend.src.agents.cbt_agent      import cbt_agent_node
+from backend.src.agents.crisis_agent   import crisis_precheck_node, crisis_agent_node
+from backend.src.agents.mood_tracker   import mood_tracker_node
+from backend.src.agents.resource_finder import resource_finder_node
 from config import GROQ_API_KEY, LLM_MODEL
 
 
@@ -129,8 +129,8 @@ User message: {query}"""
 def general_rag_node(state: AgentState) -> AgentState:
     """Handles GENERAL intent — psychoeducation and general mental health questions."""
     from langchain_groq import ChatGroq
-    from src.retrieval import hybrid_retrieve_and_rerank, format_context, get_top_rerank_score
-    from src.utils import compute_confidence
+    from backend.src.retrieval import hybrid_retrieve_and_rerank, format_context, get_top_rerank_score
+    from backend.src.utils import compute_confidence
     from config import LLM_TEMPERATURE
 
     query            = state["messages"][-1]["content"]

@@ -7,8 +7,8 @@ search query — never logged or stored.
 """
 import os
 from langchain_groq import ChatGroq
-from src.schemas import ResourceList
-from src.utils import compute_confidence, parse_pydantic_from_llm
+from backend.src.schemas import ResourceList
+from backend.src.utils import parse_pydantic_from_llm
 from config import GROQ_API_KEY, TAVILY_API_KEY, LLM_MODEL, LLM_TEMPERATURE
 
 

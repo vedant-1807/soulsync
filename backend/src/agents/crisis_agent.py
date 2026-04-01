@@ -8,10 +8,10 @@ Two-stage pipeline:
 Retrieves from docs/crisis/ knowledge base (SAFE-T, 988 Lifeline, WHO mhGAP).
 """
 from langchain_groq import ChatGroq
-from src.retrieval import hybrid_retrieve_and_rerank, format_context, get_top_rerank_score
-from src.schemas import CrisisAssessment
-from src.safety import CRISIS_ASSESSMENT_PROMPT, get_crisis_response, CRISIS_RESOURCES
-from src.utils import compute_confidence, parse_pydantic_from_llm
+from backend.src.retrieval import hybrid_retrieve_and_rerank, format_context, get_top_rerank_score
+from backend.src.schemas import CrisisAssessment
+from backend.src.safety import CRISIS_ASSESSMENT_PROMPT, get_crisis_response, CRISIS_RESOURCES
+from backend.src.utils import compute_confidence, parse_pydantic_from_llm
 from config import GROQ_API_KEY, LLM_MODEL
 
 
@@ -21,7 +21,7 @@ def crisis_precheck_node(state: dict) -> dict:
     Fast regex check only. Zero LLM cost.
     Sets crisis_flagged=True to route to crisis_agent if triggered.
     """
-    from src.safety import regex_crisis_check
+    from backend.src.safety import regex_crisis_check
     query  = state["messages"][-1]["content"]
     flagged = regex_crisis_check(query)
     return {**state, "crisis_flagged": flagged}
