@@ -7,8 +7,8 @@ import sys
 import os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
-from src.safety import regex_crisis_check, get_crisis_response
-from src.utils import sanitise_input, anonymise_session_id
+from backend.src.safety import regex_crisis_check, get_crisis_response
+from backend.src.utils import sanitise_input, anonymise_session_id
 
 
 # ── Crisis detection — positives (should ALL return True) ──────────

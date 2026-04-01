@@ -12,8 +12,8 @@ Opens at: http://localhost:7860 (+ auto-generated public share link)
 import uuid
 import gradio as gr
 
-from src.graph import build_graph, make_initial_state
-from src.utils import sanitise_input, safe_response, format_explainability_panel
+from backend.src.graph import build_graph, make_initial_state
+from backend.src.utils import sanitise_input, safe_response, format_explainability_panel
 
 # Build the graph once at startup
 print("Building SoulSync graph...")
