@@ -18,7 +18,7 @@ function groupByDate(sessions: ChatSession[]) {
   const yesterday = new Date(today); yesterday.setDate(today.getDate() - 1);
   const groups: Record<string, ChatSession[]> = { Today: [], Yesterday: [], Earlier: [] };
   for (const s of sessions) {
-    const d = new Date(s.created_at); d.setHours(0, 0, 0, 0);
+    const d = new Date(s.createdAt); d.setHours(0, 0, 0, 0);
     if      (d.getTime() === today.getTime())     groups["Today"].push(s);
     else if (d.getTime() === yesterday.getTime()) groups["Yesterday"].push(s);
     else                                          groups["Earlier"].push(s);
