@@ -9,7 +9,8 @@ load_dotenv()
 
 # ── LLM ───────────────────────────────────────────────────────────
 GROQ_API_KEY      = os.getenv("GROQ_API_KEY")
-LLM_MODEL         = os.getenv("LLM_MODEL", "llama3-8b-8192")
+# LLM_MODEL         = os.getenv("LLM_MODEL", "llama3-8b-8192")
+LLM_MODEL         = os.getenv("LLM_MODEL", "llama-3.1-8b-instant")
 LLM_TEMPERATURE   = float(os.getenv("LLM_TEMPERATURE", "0.3"))
 
 # ── Web Search ────────────────────────────────────────────────────

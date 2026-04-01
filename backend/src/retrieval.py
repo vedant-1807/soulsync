@@ -2,13 +2,9 @@
 src/retrieval.py — hybrid RAG pipeline with cross-encoder reranking
 Flow: query → BM25 top-10 + semantic top-10 → merge → rerank → top-3
 """
-import os, sys
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
 from langchain_community.vectorstores import Chroma
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.retrievers import BM25Retriever
-from langchain.schema import Document
 from sentence_transformers import CrossEncoder
 from config import CHROMA_PERSIST_DIR, EMBEDDING_MODEL, RETRIEVER_TOP_K
 
@@ -35,13 +31,13 @@ def hybrid_retrieve_and_rerank(query, category_filter=None, top_k=None):
     semantic_kwargs = {"k": 10}
     if category_filter:
         semantic_kwargs["filter"] = {"category": category_filter}
-    semantic_docs = vectorstore.as_retriever(search_kwargs=semantic_kwargs).get_relevant_documents(query)
+    semantic_docs = vectorstore.as_retriever(search_kwargs=semantic_kwargs).invoke(query)
     try:
         chroma_data = vectorstore.get(where={"category": category_filter} if category_filter else None)
         if chroma_data and chroma_data.get("documents"):
             bm25_docs = BM25Retriever.from_texts(
                 texts=chroma_data["documents"], metadatas=chroma_data["metadatas"], k=10
-            ).get_relevant_documents(query)
+            ).invoke(query)
         else:
             bm25_docs = []
     except Exception as e:

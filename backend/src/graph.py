@@ -67,6 +67,7 @@ Routing rules:
 Respond with EXACTLY ONE WORD — the category name. Nothing else.
 """
 
+llm = ChatGroq(api_key=GROQ_API_KEY, model=LLM_MODEL, temperature=0.0)
 
 # ── Node implementations ───────────────────────────────────────────
 
@@ -77,7 +78,7 @@ def supervisor_node(state: AgentState) -> AgentState:
     history_block = (
         f"Recent conversation:\n{history}\n\n" if history else ""
     )
-    llm = ChatGroq(api_key=GROQ_API_KEY, model=LLM_MODEL, temperature=0.0)
+    # llm = ChatGroq(api_key=GROQ_API_KEY, model=LLM_MODEL, temperature=0.0)
     decision = llm.invoke([
         {"role": "system", "content": SUPERVISOR_PROMPT.format(history_block=history_block)},
         {"role": "user",   "content": last_message},
