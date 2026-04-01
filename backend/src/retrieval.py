@@ -6,7 +6,7 @@ from langchain_community.vectorstores import Chroma
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.retrievers import BM25Retriever
 from sentence_transformers import CrossEncoder
-from config import CHROMA_PERSIST_DIR, EMBEDDING_MODEL, RETRIEVER_TOP_K
+from backend.config import CHROMA_PERSIST_DIR, EMBEDDING_MODEL, RETRIEVER_TOP_K
 
 CROSS_ENCODER_MODEL = "cross-encoder/ms-marco-MiniLM-L-6-v2"
 _cross_encoder = None

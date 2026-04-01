@@ -16,8 +16,8 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
 from pydantic import BaseModel, Field
 from langchain_groq import ChatGroq
-from src.utils import parse_pydantic_from_llm
-from config import GROQ_API_KEY, LLM_MODEL
+from backend.src.utils import parse_pydantic_from_llm
+from backend.config import GROQ_API_KEY, LLM_MODEL
 
 
 # ── Eval schema ────────────────────────────────────────────────────

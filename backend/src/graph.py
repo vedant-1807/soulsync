@@ -23,7 +23,7 @@ from backend.src.agents.cbt_agent      import cbt_agent_node
 from backend.src.agents.crisis_agent   import crisis_precheck_node, crisis_agent_node
 from backend.src.agents.mood_tracker   import mood_tracker_node
 from backend.src.agents.resource_finder import resource_finder_node
-from config import GROQ_API_KEY, LLM_MODEL
+from backend.config import GROQ_API_KEY, LLM_MODEL
 
 
 # ── Agent State ────────────────────────────────────────────────────
@@ -93,7 +93,7 @@ def supervisor_node(state: AgentState) -> AgentState:
 def greeting_node(state: AgentState) -> AgentState:
     """Handles casual greetings without over-analyzing emotion."""
     from langchain_groq import ChatGroq
-    from config import LLM_TEMPERATURE
+    from backend.config import LLM_TEMPERATURE
 
     query = state["messages"][-1]["content"]
     history = state.get("conversation_history", "")
@@ -132,7 +132,7 @@ def general_rag_node(state: AgentState) -> AgentState:
     from langchain_groq import ChatGroq
     from backend.src.retrieval import hybrid_retrieve_and_rerank, format_context, get_top_rerank_score
     from backend.src.utils import compute_confidence
-    from config import LLM_TEMPERATURE
+    from backend.config import LLM_TEMPERATURE
 
     query            = state["messages"][-1]["content"]
     docs             = hybrid_retrieve_and_rerank(query, top_k=3)

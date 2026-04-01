@@ -13,7 +13,7 @@ from langchain_groq import ChatGroq
 from backend.src.retrieval import hybrid_retrieve_and_rerank, format_context, get_top_rerank_score
 from backend.src.schemas import MoodEntry
 from backend.src.utils import compute_confidence, parse_pydantic_from_llm, anonymise_session_id
-from config import GROQ_API_KEY, LLM_MODEL, LLM_TEMPERATURE, MOOD_DB_PATH
+from backend.config import GROQ_API_KEY, LLM_MODEL, LLM_TEMPERATURE, MOOD_DB_PATH
 
 
 # ── SQLite helpers ─────────────────────────────────────────────────

@@ -2,7 +2,7 @@
 import os, sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from langchain.memory import ConversationBufferWindowMemory
-from config import MEMORY_WINDOW
+from backend.config import MEMORY_WINDOW
 
 def build_memory():
     return ConversationBufferWindowMemory(

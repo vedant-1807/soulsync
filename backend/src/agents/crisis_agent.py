@@ -12,7 +12,7 @@ from backend.src.retrieval import hybrid_retrieve_and_rerank, format_context, ge
 from backend.src.schemas import CrisisAssessment
 from backend.src.safety import CRISIS_ASSESSMENT_PROMPT, get_crisis_response, CRISIS_RESOURCES
 from backend.src.utils import compute_confidence, parse_pydantic_from_llm
-from config import GROQ_API_KEY, LLM_MODEL
+from backend.config import GROQ_API_KEY, LLM_MODEL
 
 
 def crisis_precheck_node(state: dict) -> dict:

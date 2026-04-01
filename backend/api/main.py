@@ -14,7 +14,7 @@ from pydantic import BaseModel
 
 from backend.src.graph import build_graph, make_initial_state
 from backend.src.utils import sanitise_input, safe_response, format_explainability_panel
-from config import MOOD_DB_PATH, CHAT_DB_PATH
+from backend.config import MOOD_DB_PATH, CHAT_DB_PATH
 
 app   = FastAPI(title="SoulSync API", version="3.0")
 graph = build_graph()

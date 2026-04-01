@@ -4,7 +4,7 @@ from langchain_groq import ChatGroq
 from backend.src.retrieval import hybrid_retrieve_and_rerank, format_context
 from backend.src.utils import compute_confidence, parse_pydantic_safe
 from backend.src.schemas import CBTResponse
-from config import GROQ_API_KEY, LLM_MODEL, LLM_TEMPERATURE
+from backend.config import GROQ_API_KEY, LLM_MODEL, LLM_TEMPERATURE
 
 DISTORTIONS = {
     "all-or-nothing":  r"\b(always|never|everything|nothing|completely|totally|everyone|no one)\b",

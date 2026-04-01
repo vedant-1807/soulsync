@@ -9,7 +9,7 @@ import os
 from langchain_groq import ChatGroq
 from backend.src.schemas import ResourceList
 from backend.src.utils import parse_pydantic_from_llm
-from config import GROQ_API_KEY, TAVILY_API_KEY, LLM_MODEL, LLM_TEMPERATURE
+from backend.config import GROQ_API_KEY, TAVILY_API_KEY, LLM_MODEL, LLM_TEMPERATURE
 
 
 # ── Location extraction prompt ─────────────────────────────────────

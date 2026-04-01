@@ -15,7 +15,7 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import Chroma
 
-from config import DOCS_DIR, CHROMA_PERSIST_DIR, EMBEDDING_MODEL
+from backend.config import DOCS_DIR, CHROMA_PERSIST_DIR, EMBEDDING_MODEL
 
 # ── Category folders ──────────────────────────────────────────────
 CATEGORIES = ["cbt", "crisis", "general"]
