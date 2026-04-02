@@ -13,11 +13,29 @@ from fastapi.responses import FileResponse
 from pydantic import BaseModel
 
 from backend.src.graph import build_graph, make_initial_state
-from backend.src.utils import sanitise_input, safe_response, format_explainability_panel
-from backend.config import MOOD_DB_PATH, CHAT_DB_PATH
+from backend.src.utils import sanitise_input, safe_response, format_explainability_panel, parse_pydantic_from_llm
+from backend.src.agents.mood_tracker import init_db as _init_mood_db, log_mood as _log_mood
+from backend.src.schemas import MoodEntry
+from backend.config import MOOD_DB_PATH, CHAT_DB_PATH, GROQ_API_KEY, LLM_MODEL, LLM_TEMPERATURE
+from langchain_groq import ChatGroq
 
 app   = FastAPI(title="SoulSync API", version="3.0")
 graph = build_graph()
+
+_MINI_MOOD_PROMPT = """Extract the emotional state from this message. Reply with ONLY valid JSON, no markdown:
+{{"score": <float -1.0 to 1.0>, "emotion": "anxious"|"sad"|"angry"|"neutral"|"content"|"hopeful"|"overwhelmed"|"numb", "energy": "very_low"|"low"|"moderate"|"high", "note": "<one sentence>", "trend_alert": null, "response_text": "", "sources": [], "confidence": 0.5}}
+Message: {message}"""
+
+def _background_log_mood(session_id: str, message: str) -> None:
+    """Lightweight mood extraction + logging for non-MOOD-routed messages."""
+    try:
+        _init_mood_db()
+        llm = ChatGroq(api_key=GROQ_API_KEY, model=LLM_MODEL, temperature=0.0)
+        raw = llm.invoke([{"role": "user", "content": _MINI_MOOD_PROMPT.format(message=message)}])
+        entry = parse_pydantic_from_llm(raw.content, MoodEntry)
+        _log_mood(session_id, entry)
+    except Exception as e:
+        print(f"[mood_log] background extraction failed: {e}")
 
 # Allow dev servers + production frontend
 # FRONTEND_URL can be comma-separated for multiple origins, e.g. "https://app.vercel.app,https://other.vercel.app"
@@ -89,6 +107,11 @@ async def chat(req: ChatRequest):
 
     initial_state = make_initial_state(message, session_id, conversation_history=history)
     result        = graph.invoke(initial_state)
+
+    # Log mood for every message — mood_tracker already logs when routed to MOOD,
+    # so only run the background extractor for other agents.
+    if result.get("agent_used") != "Mood Tracker":
+        _background_log_mood(session_id, message)
 
     answer = safe_response(result["final_response"])
 
