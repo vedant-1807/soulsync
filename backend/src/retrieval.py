@@ -3,13 +3,14 @@ src/retrieval.py — hybrid RAG pipeline with cross-encoder reranking
 Flow: query → BM25 top-10 + semantic top-10 → merge → rerank → top-3
 """
 from langchain_community.vectorstores import Chroma
-from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.retrievers import BM25Retriever
 from sentence_transformers import CrossEncoder
 from backend.config import CHROMA_PERSIST_DIR, EMBEDDING_MODEL, RETRIEVER_TOP_K
 
 CROSS_ENCODER_MODEL = "cross-encoder/ms-marco-MiniLM-L-6-v2"
 _cross_encoder = None
+_vectorstore = None
 
 def get_cross_encoder():
     global _cross_encoder
@@ -18,11 +19,14 @@ def get_cross_encoder():
     return _cross_encoder
 
 def get_vectorstore():
-    embeddings = HuggingFaceEmbeddings(
-        model_name=EMBEDDING_MODEL,
-        encode_kwargs={"normalize_embeddings": True},
-    )
-    return Chroma(persist_directory=CHROMA_PERSIST_DIR, embedding_function=embeddings)
+    global _vectorstore
+    if _vectorstore is None:
+        embeddings = HuggingFaceEmbeddings(
+            model_name=EMBEDDING_MODEL,
+            encode_kwargs={"normalize_embeddings": True},
+        )
+        _vectorstore = Chroma(persist_directory=CHROMA_PERSIST_DIR, embedding_function=embeddings)
+    return _vectorstore
 
 def hybrid_retrieve_and_rerank(query, category_filter=None, top_k=None):
     if top_k is None:
